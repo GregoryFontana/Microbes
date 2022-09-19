@@ -1,0 +1,9 @@
+body{
+    background-color: rgb(123, 23, 45);
+    display: flex;
+    justify-content: center;
+}
+canvas{
+    background: black;
+    border: 4px solid green;
+}

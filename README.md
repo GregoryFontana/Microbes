@@ -1,4 +1,4 @@
-### Frogger
+### **Frogger**
 
 ### Tech Stack
 - JS
