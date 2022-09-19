@@ -1,6 +1,6 @@
 ### Frogger
 
-##Tech Stack
+### Tech Stack
 - JS
 - HTML
 - CSS
