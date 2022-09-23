@@ -1,9 +1,11 @@
 body{
-    background-color: rgb(123, 23, 45);
+    background-image: url('/CSS/elisaveta-bunduche-TOL5F-3qqB4-unsplash.jpg');
+    background-size: cover;
     display: flex;
     justify-content: center;
 }
 canvas{
     background: black;
-    border: 4px solid green;
+    border: 20px solid rgb(249, 1, 150);
+    
 }
