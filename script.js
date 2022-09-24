@@ -64,10 +64,14 @@ let carSX8 = 0
 let carY8 = 265
 
 //Log Variables
+//log 1
 let logX1 = 300;
 let logY1 = 180;
 let logWidth = 120;
 let logHeight = 30;
+//log 2
+let logX2 = 40;
+let logY2 = 180;
 //console.dir(car)
 
 document.addEventListener('keydown', keyDownHandler, false)
@@ -264,18 +268,46 @@ if(carsX[i] <= x + width &&
 //Draw Logs
 function drawLogs(){
   ctx.fillStyle ="tan";
-  ctx.fillRect(logX1, logY1, logWidth, logHeight);
+  let logsX = [logX1, logX2];
+  let logsY = [logY1, logY2]
+
+  for(i = 0; i < logsX.length; i++){
+  ctx.fillRect(logsX[i], logsY[i], logWidth, logHeight);
+}
+}
+//Move Logs
+function moveLogs(){
+  if(logX1 < canvas.width + 100){
+    logX1 = logX1 + 2;
+  } else {
+    logX1 = -100
+  }
+}
+//Float
+function float(){
+  if(y < 220){
+    if (logX1 <= x + width && 
+      logX1 + logWidth >= x &&
+    logY1 + logHeight >= y &&
+    logY1 <= y + height){
+      if(x < canvas.width-30){
+        x = x +2
+      }
+    }
+
 }
 //Draw Screen function
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   drawBackground();
   drawLogs()
+  moveLogs()
   drawFrog();
   moveFrog();
   drawCars();
   moveCars();
   runOver();
+  float()
 
 requestAnimationFrame(draw);
 }
