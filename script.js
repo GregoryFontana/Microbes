@@ -72,6 +72,9 @@ let logHeight = 30;
 //log 2
 let logX2 = 40;
 let logY2 = 180;
+//log 3
+let logX3 = 100
+let logY3 = 136
 //console.dir(car)
 
 document.addEventListener('keydown', keyDownHandler, false)
@@ -268,8 +271,8 @@ if(carsX[i] <= x + width &&
 //Draw Logs
 function drawLogs(){
   ctx.fillStyle ="tan";
-  let logsX = [logX1, logX2];
-  let logsY = [logY1, logY2]
+  let logsX = [logX1, logX2, logX3];
+  let logsY = [logY1, logY2, logY3]
 
   for(i = 0; i < logsX.length; i++){
   ctx.fillRect(logsX[i], logsY[i], logWidth, logHeight);
@@ -282,17 +285,48 @@ function moveLogs(){
   } else {
     logX1 = -100
   }
+    if(logX2 < canvas.width + 100){
+      logX2 = logX2 + 2;
+    } else {
+      logX2 = -100
+    }
+    if(logX3 > 0 - logWidth){
+      logX3 = logX3 - 2;
+    } else {
+      logX3 = canvas.width + 100
+    }
+
 }
+
 //Float
 function float(){
-  if(y < 220){
-    if (logX1 <= x + width && 
+  
+     if (logX1 <= x + width && 
       logX1 + logWidth >= x &&
     logY1 + logHeight >= y &&
     logY1 <= y + height){
       if(x < canvas.width-30){
-        x = x +2
+        x = x +2;
       }
+    }
+    else if (logX2 <= x + width &&
+      logX2 + logWidth >= x &&
+      logY2 + logHeight >= y &&
+      logY2 <= y + height){
+        if(x < canvas.width - 30){ 
+          x = x + 2;
+        }
+      }
+else if (logX3 <= x + width &&
+  logX3 + logWidth >= x &&
+  logY3 + logHeight >= y &&
+  logY3 <= y + height){
+    if (x > 0){
+      x = x - 2;
+  }}
+    
+    else if (y < 220) {
+      y = 488;
     }
 
 }
