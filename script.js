@@ -25,7 +25,7 @@ let down = true
 let right = true 
 let left = true
 
-//All Cars
+//All Car Variables
 let car = new Image(); 
 car.src = "froggercars.png";
 //1st Car
@@ -63,7 +63,7 @@ let carX8 = 160
 let carSX8 = 0
 let carY8 = 265
 
-//Log Variables
+//All Log Variables
 //log 1
 let logX1 = 300;
 let logY1 = 180;
@@ -90,6 +90,35 @@ let logY7 = 48
 //log 8
 let logX8 = 500
 let logY8 = 48
+//All Pads
+let padWidth = 30;
+let padHeight = 30;
+let padX1 = 20
+let padY1 = 4
+let padX2 = 120
+let padY2 = 4
+let padX3 = 220
+let padY3 = 4
+let padX4 = 320
+let padY4 = 4
+let padX5 = 420
+let padY5 = 4
+let padX6 = 520
+let padY6 = 4
+
+let pad1 = false;
+let pad2 = false;
+let pad3 = false;
+let pad4 = false;
+let pad5 = false;
+let pad6 = false;
+
+//Lives Lost Variable
+let lives = 3
+let livesLost = 0
+let play = true
+let victoryCondition = false
+
 //console.dir(car)
 
 document.addEventListener('keydown', keyDownHandler, false)
@@ -211,21 +240,21 @@ function drawCars(){
 function moveCars(){
   //car 1
   if(carX1 < canvas.width + 100){
-    carX1 = carX1 + 5
+    carX1 = carX1 + 2
   } else { 
     carX1 = -100
     carSX1 = (Math.floor(Math.random() * 4)) * 160
   }
   //car 2
   if(carX2 < canvas.width + 100){
-    carX2 = carX2 + 5
+    carX2 = carX2 + 2
   } else { 
     carX2 = -100
     carSX2 = (Math.floor(Math.random() * 4)) * 160
   }
   //car 3
   if(carX3 > -100){
-    carX3 = carX3 - 5;
+    carX3 = carX3 - 2;
   }
   else{
     carX3 = canvas.width + 100;
@@ -233,14 +262,14 @@ function moveCars(){
   }
   //car 4
   if(carX4 < canvas.width + 100){
-    carX4 = carX4 + 5
+    carX4 = carX4 + 2
   } else { 
     carX4 = -100
     carSX4 = (Math.floor(Math.random() * 4)) * 160
   }
   //car 5
   if(carX5 > -100){
-    carX5 = carX5 - 5;
+    carX5 = carX5 - 2;
   }
   else{
     carX5 = canvas.width + 100;
@@ -248,7 +277,7 @@ function moveCars(){
   }
   //car 6
   if(carX6 > -100){
-    carX6 = carX6 - 5;
+    carX6 = carX6 - 2;
   }
   else{
     carX6 = canvas.width + 100;
@@ -256,14 +285,14 @@ function moveCars(){
   }
 //car 7
 if(carX7 < canvas.width + 100){
-  carX7 = carX7 + 5
+  carX7 = carX7 + 2
 } else { 
   carX7 = -100
   carSX7 = (Math.floor(Math.random() * 4)) * 160
 }
 //car 8
 if(carX8 > -100){
-  carX8 = carX8 - 5;
+  carX8 = carX8 - 2;
 }
 else{
   carX8 = canvas.width + 100;
@@ -280,9 +309,11 @@ for(i = 0; i < carsX.length; i++){
 
 if(carsX[i] <= x + width && 
   carsX[i] + carWidth >= x && carsY[i] + carHeight >= y && carsY[i] <= y + height){
-  y=488
+  y=488;
+  livesLost ++;
 }
-}}
+}
+}
 //Draw Logs
 function drawLogs(){
   ctx.fillStyle ="tan";
@@ -296,47 +327,47 @@ function drawLogs(){
 //Move Logs
 function moveLogs(){
   if(logX1 < canvas.width + 100){
-    logX1 = logX1 + 2;
+    logX1 = logX1 + 1;
   } else {
     logX1 = -100
   }
     if(logX2 < canvas.width + 100){
-      logX2 = logX2 + 2;
+      logX2 = logX2 + 1;
     } else {
       logX2 = -100
     }
     if(logX3 > 0 - logWidth){
-      logX3 = logX3 - 2;
+      logX3 = logX3 - 1;
     } else {
       logX3 = canvas.width + 100
     }
     if (logX4 > 0-logWidth){
-      logX4 = logX4 - 2;
+      logX4 = logX4 - 1;
     }
     else {
       logX4 = canvas.width + 100;
     }
     if (logX5 < canvas.width + 100){
-      logX5 = logX5 + 3
+      logX5 = logX5 + 1
     }
     else {
       logX5 = -100
     }
     if (logX6 < canvas.width + 100){
-      logX6 = logX6 + 3
+      logX6 = logX6 + 1
     }
     else {
       logX6 = -100;
     }
     if (logX7 > 0 - logWidth){
-      logX7 = logX7 -2 
+      logX7 = logX7 -1 
     }
     else {
       logX7 = canvas.width + 100;
     }
       
       if (logX8 > 0-logWidth){
-        logX8 = logX8 - 2;
+        logX8 = logX8 - 1;
       }
       else {
         logX8 = canvas.width + 100;
@@ -351,7 +382,7 @@ function float(){
     logY1 + logHeight >= y &&
     logY1 <= y + height){
       if(x < canvas.width-30){
-        x = x +2;
+        x = x +1;
       }
     }
     else if (logX2 <= x + width &&
@@ -359,7 +390,7 @@ function float(){
       logY2 + logHeight >= y &&
       logY2 <= y + height){
         if(x < canvas.width - 30){ 
-          x = x + 2;
+          x = x + 1;
         }
       }
 else if (logX3 <= x + width &&
@@ -367,14 +398,14 @@ else if (logX3 <= x + width &&
   logY3 + logHeight >= y &&
   logY3 <= y + height){
     if (x > 0){
-      x = x - 2;
+      x = x - 1;
   }}
   else if (logX4 <= x + width &&
     logX4 + logWidth >= x &&
     logY4 + logHeight >= y &&
     logY4 <= y + height){
       if (x > 0){
-        x = x - 2;
+        x = x - 1;
       }
     }
     else if (logX5 <= x + width &&
@@ -382,7 +413,7 @@ else if (logX3 <= x + width &&
       logY5 + logHeight >= y &&
       logY5 <= y + height){
         if (x < canvas.width -30){
-          x =x +3;
+          x =x +1;
         }
       }
       else if (logX6 <= x + width &&
@@ -390,14 +421,14 @@ else if (logX3 <= x + width &&
         logY6 + logHeight >= y &&
         logY6 <= y + height){
           if (x < canvas.width - 30){
-            x = x +3;
+            x = x +1;
           }}
           else if (logX7 <= x + width &&
             logX7 + logWidth >= x &&
             logY7 + logHeight >= y &&
             logY7 <= y + height){
               if (x > 0){
-                x = x - 2;
+                x = x - 1;
               }
             }
 
@@ -406,26 +437,140 @@ else if (logX3 <= x + width &&
                 logY8 + logHeight >= y &&
                 logY8 <= y + height){
                   if (x > 0){
-                    x = x - 2;
+                    x = x - 1;
                   }}
-    else if (y < 220) {
+    else if (y < 220 && y > 44) {
       y = 488;
+      livesLost ++;
     }
+}
+//Draw Pads
+function drawPads(){
+  ctx.fillStyle = "seagreen";
+  let padsX = [padX1, padX2, padX3, padX4, padX5, padX6]
+  let padsY = [padY1, padY2, padY3, padY4, padY5, padY6]
 
+  for (i = 0; i< padsX.length; i++){
+    ctx.fillRect(padsX[i], padsY[i], padWidth, padHeight)
+  }
+}
+
+//Pad Reset Function
+function onPad(){
+  if (padX1 <= x + width &&
+    padX1 + padWidth >= x &&
+    padY1 + padHeight >= y &&
+    padY1 <= y + height){
+      pad1 = true
+      y = 488
+    }
+    else if (padX2 <= x + width &&
+      padX2 + padWidth >= x &&
+      padY2 + padHeight >= y &&
+      padY2 <= y + height){
+        pad2 = true
+        y = 488
+      }
+
+      else if (padX3 <= x + width &&
+        padX3 + padWidth >= x &&
+        padY3 + padHeight >= y &&
+        padY3 <= y + height){
+          pad3 = true
+          y = 488
+        }
+
+        else if (padX4 <= x + width &&
+          padX4 + padWidth >= x &&
+          padY4 + padHeight >= y &&
+          padY4 <= y + height){
+            pad4 = true
+            y = 488
+          }
+
+          else if (padX5 <= x + width &&
+            padX5 + padWidth >= x &&
+            padY5 + padHeight >= y &&
+            padY5 <= y + height){
+              pad5 = true
+              y = 488
+            }
+
+            else if (padX6 <= x + width &&
+              padX6 + padWidth >= x &&
+              padY6 + padHeight >= y &&
+              padY6 <= y + height){
+                pad6 = true
+                y = 488
+              }
+
+else if (y < 48){
+        y = 488;
+        livesLost++;
+      }
+
+      let pads = [pad1, pad2, pad3, pad4, pad5, pad6]
+      let padsX = [padX1, padX2, padX3, padX4, padX5, padX6]
+      let padsY = [padY1, padY2, padY3, padY4, padY5, padY6]
+
+      for (i = 0; i < pads.length; i++){
+        if(pads[i] === true){
+          ctx.drawImage(frog, 0, 0, 40, 40, padsX[i], padsY[i], 30, 30)
+        }
+      }
+}
+
+//Draw Lives Win state
+function drawLives(){
+  //count and display lives left
+  if (lives - livesLost !=0){
+    ctx.fillStyle = "white"
+    ctx.font = "30px Arial"
+    ctx.fillText("LIVES: " + (lives - livesLost), (canvas.width/2)-70, 525)
+  }
+}
+//Victory
+function victory(){
+  if(pad1 && pad2 && pad3 && pad4 && pad5 && pad6){
+    //print "You Won!" at (220, 488)
+    ctx.fillStyle = "white";
+    ctx.font = "30px Arial";
+    ctx.fillText("You won!", (canvas.width/2)-60, 225);
+    victoryCondition = true;
+  }
+}
+//Game Over Function
+function gameOver(){
+  //end game if they run out of lives
+  if(lives-livesLost == 0){
+    play = false;
+    ctx.fillStyle = "white"
+    ctx.font = "72px Arial"
+    ctx.fillText("GAME OVER", o, 100);
+    ctx.font = "28px Arial";
+    ctx.fillText("Refresh to Try Again!", 50, 150)
+  }
 }
 //Draw Screen function
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
+  if(victoryCondition === false){
+    gameOver()
+    drawLives()
+  }
+  if(play){
   drawBackground();
   drawLogs()
   moveLogs()
+  drawPads()
+  onPad()
   drawFrog();
   moveFrog();
   drawCars();
   moveCars();
   runOver();
   float()
-
+  }
 requestAnimationFrame(draw);
 }
 draw();
