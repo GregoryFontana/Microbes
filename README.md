@@ -1,13 +1,13 @@
 ### **Frogger**
 
-## An adaptation of Frogger that was supposed to be called **Microbes**
+## An adaptation of Frogger that was supposed to be called "**Microbes**"
 
 ### **Motivation**
 
-the "bugs" were supposed to crawl across someone's face (ideally Donald Trump) and the objective was to direct your Microbe towards the giant nose at the top of the board. Once you got there, a gif of someone sneezing would play.
+The "bugs" were supposed to crawl across someone's face and the objective was to direct your Microbe towards the giant nose at the top of the board. Once you got there, a gif of someone sneezing would play.
 
 ## Images
-![Screenshot](image.jpg)
+![Screenshot](Screenshot.png)
 
 ### Tech Stack
 - JS
