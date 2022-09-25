@@ -114,10 +114,10 @@ let pad5 = false;
 let pad6 = false;
 
 //Lives Lost Variable
-let lives = 3
-let livesLost = 0
-let play = true
-let victoryCondition = false
+let lives = 3;
+let livesLost = 0;
+let play = true;
+let victoryCondition = false;
 
 //console.dir(car)
 
@@ -457,46 +457,46 @@ function drawPads(){
 
 //Pad Reset Function
 function onPad(){
-  if (padX1 <= x + width &&
+if (padX1 <= x + width &&
     padX1 + padWidth >= x &&
     padY1 + padHeight >= y &&
-    padY1 <= y + height){
-      pad1 = true
-      y = 488
+    padY1 <= y + height) {
+      pad1 = true;
+      y = 488;
     }
-    else if (padX2 <= x + width &&
+  else if (padX2 <= x + width &&
       padX2 + padWidth >= x &&
       padY2 + padHeight >= y &&
       padY2 <= y + height){
-        pad2 = true
-        y = 488
+        pad2 = true;
+        y = 488;
       }
 
-      else if (padX3 <= x + width &&
+  else if (padX3 <= x + width &&
         padX3 + padWidth >= x &&
         padY3 + padHeight >= y &&
         padY3 <= y + height){
-          pad3 = true
-          y = 488
+          pad3 = true;
+          y = 488;
         }
 
-        else if (padX4 <= x + width &&
+  else if (padX4 <= x + width &&
           padX4 + padWidth >= x &&
           padY4 + padHeight >= y &&
-          padY4 <= y + height){
-            pad4 = true
-            y = 488
+          padY4 <= y + height) {
+            pad4 = true;
+            y = 488;
           }
 
-          else if (padX5 <= x + width &&
+  else if (padX5 <= x + width &&
             padX5 + padWidth >= x &&
             padY5 + padHeight >= y &&
             padY5 <= y + height){
-              pad5 = true
-              y = 488
+              pad5 = true;
+              y = 488;
             }
 
-            else if (padX6 <= x + width &&
+  else if (padX6 <= x + width &&
               padX6 + padWidth >= x &&
               padY6 + padHeight >= y &&
               padY6 <= y + height){
@@ -506,15 +506,15 @@ function onPad(){
 
 else if (y < 48){
         y = 488;
-        livesLost++;
+        livesLost ++;
       }
 
-      let pads = [pad1, pad2, pad3, pad4, pad5, pad6]
-      let padsX = [padX1, padX2, padX3, padX4, padX5, padX6]
-      let padsY = [padY1, padY2, padY3, padY4, padY5, padY6]
+let pads = [pad1, pad2, pad3, pad4, pad5, pad6];
+let padsX = [padX1, padX2, padX3, padX4, padX5, padX6];
+let padsY = [padY1, padY2, padY3, padY4, padY5, padY6];
 
       for (i = 0; i < pads.length; i++){
-        if(pads[i] === true){
+        if (pads[i] === true) {
           ctx.drawImage(frog, 0, 0, 40, 40, padsX[i], padsY[i], 30, 30)
         }
       }
@@ -526,44 +526,45 @@ function drawLives(){
   if (lives - livesLost !=0){
     ctx.fillStyle = "white"
     ctx.font = "30px Arial"
-    ctx.fillText("LIVES: " + (lives - livesLost), (canvas.width/2)-70, 525)
+    ctx.fillText("LIVES: " + (lives - livesLost), (canvas.width/2)-70, 525);
   }
 }
 //Victory
-function victory(){
-  if(pad1 && pad2 && pad3 && pad4 && pad5 && pad6){
+function victory () {
+  if (pad1 && pad2 && pad3 && pad4 && pad5 && pad6){
     //print "You Won!" at (220, 488)
     ctx.fillStyle = "white";
     ctx.font = "30px Arial";
-    ctx.fillText("You won!", (canvas.width/2)-60, 225);
+    ctx.fillText("You won!", (canvas.width/2)-60, 525);
     victoryCondition = true;
   }
 }
 //Game Over Function
 function gameOver(){
   //end game if they run out of lives
-  if(lives-livesLost == 0){
+  if (lives - livesLost == 0) {
     play = false;
     ctx.fillStyle = "white"
-    ctx.font = "72px Arial"
-    ctx.fillText("GAME OVER", o, 100);
-    ctx.font = "28px Arial";
-    ctx.fillText("Refresh to Try Again!", 50, 150)
+    ctx.font = "87px Impact"
+    ctx.fillText("GAME OVER", 70, 200);
+    ctx.font = "28px Impact";
+    ctx.fillText("Refresh to Try Again!", 170, 250);
   }
 }
 //Draw Screen function
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
-  if(victoryCondition === false){
-    gameOver()
-    drawLives()
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  if (victoryCondition === false) {
+    gameOver();
+    drawLives();
   }
-  if(play){
+  if (play){
   drawBackground();
-  drawLogs()
-  moveLogs()
-  drawPads()
-  onPad()
+  drawLogs();
+  moveLogs();
+  drawPads();
+  onPad();
   drawFrog();
   moveFrog();
   drawCars();
