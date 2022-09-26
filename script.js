@@ -2,6 +2,14 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+//the grass
+let grass = new Image()
+grass.src = "background images/grass.png"
+
+//the water
+let water = new Image()
+water.src = "background images/water.png"
+
 //the frog
 let frog = new Image();
 frog.src = "FroggerSprites2.png";
@@ -64,6 +72,8 @@ let carSX8 = 0
 let carY8 = 265
 
 //All Log Variables
+let log = new Image()
+log.src = "background images/wood.png"
 //log 1
 let logX1 = 300;
 let logY1 = 180;
@@ -91,20 +101,23 @@ let logY7 = 48
 let logX8 = 500
 let logY8 = 48
 //All Pads
+let pad = new Image()
+pad.src = "background images/lilypad.png"
+
 let padWidth = 30;
 let padHeight = 30;
-let padX1 = 20
-let padY1 = 4
-let padX2 = 120
-let padY2 = 4
-let padX3 = 220
-let padY3 = 4
-let padX4 = 320
-let padY4 = 4
-let padX5 = 420
-let padY5 = 4
-let padX6 = 520
-let padY6 = 4
+let padX1 = 20;
+let padY1 = 4;
+let padX2 = 120;
+let padY2 = 4;
+let padX3 = 220;
+let padY3 = 4;
+let padX4 = 320;
+let padY4 = 4;
+let padX5 = 420;
+let padY5 = 4;
+let padX6 = 520;
+let padY6 = 4;
 
 let pad1 = false;
 let pad2 = false;
@@ -119,10 +132,14 @@ let livesLost = 0;
 let play = true;
 let victoryCondition = false;
 
+//Pause
+//let pause = false;
+
 //console.dir(car)
 
 document.addEventListener('keydown', keyDownHandler, false)
 document.addEventListener('keyup', keyUpHandler, false)
+//document.addEventListener('keydown', pauseGameKeyHandler, false);
 
 function keyDownHandler(e)
 {
@@ -139,13 +156,28 @@ function keyUpHandler(e)
   if(e.keyCode == 40) {downPressed = false}
 }
 
+// function pauseGameKeyHandler(e) {
+//   let keyCode = e.keyCode;
+//   switch (keyCode) {
+//     case 32:
+//       togglePause();
+//       break;
+//     }
+//   }
+  
+//   function togglePause(){
+//     pause = !pause;
+//     draw()
+//   }
 
 // The Road
 function drawBackground() {
   //drawing two strips of grass
-  ctx.fillStyle = "lime";
-  ctx.fillRect(0, 440, 570, 45);
-  ctx.fillRect(0, 220, 570, 45);
+  ctx.drawImage(grass, 0, 440, 570, 45);
+  ctx.drawImage(grass, 0, 220, 570, 45);
+  //ctx.fillStyle = "lime";
+  //ctx.fillRect(0, 440, 570, 45);
+  //ctx.fillRect(0, 220, 570, 45);
 
   //dashed white center line
   ctx.beginPath();
@@ -175,8 +207,9 @@ function drawBackground() {
   ctx.stroke();
 
   //water background here
-  ctx.fillStyle = "blue";
-  ctx.fillRect(0, 0, 570, 220);
+  ctx.drawImage(water, 0, 0, 570, 220);
+  //ctx.fillStyle = "blue";
+  //ctx.fillRect(0, 0, 570, 220);
 }
 
 function drawFrog() {
@@ -321,7 +354,8 @@ function drawLogs(){
   let logsY = [logY1, logY2, logY3, logY4, logY5, logY6, logY7, logY8]
 
   for(i = 0; i < logsX.length; i++){
-  ctx.fillRect(logsX[i], logsY[i], logWidth, logHeight);
+  ctx.drawImage(log, logsX[i], logsY[i], logWidth, logHeight);  
+  //ctx.fillRect(logsX[i], logsY[i], logWidth, logHeight);
 }
 }
 //Move Logs
@@ -445,44 +479,13 @@ else if (logX3 <= x + width &&
 }
 //Draw Pads
 function drawPads(){
-  ctx.fillStyle = "seagreen";
+  //ctx.fillStyle = "seagreen";
   let padsX = [padX1, padX2, padX3, padX4, padX5, padX6]
   let padsY = [padY1, padY2, padY3, padY4, padY5, padY6]
 
   for (i = 0; i< padsX.length; i++){
-    ctx.fillRect(padsX[i], padsY[i], padWidth, padHeight)
-  }
-}
-
-//Draw Lives Win state
-function drawLives(){
-  //count and display lives left
-  if (lives - livesLost !=0){
-    ctx.fillStyle = "white"
-    ctx.font = "30px Arial"
-    ctx.fillText("LIVES: " + (lives - livesLost), (canvas.width/2)-70, 525);
-  }
-}
-//Victory
-function victory () {
-  if (pad1 && pad2 && pad3 && pad4 && pad5 && pad6){
-    //print "You Won!" at (220, 488)
-    ctx.fillStyle = "white";
-    ctx.font = "30px Arial";
-    ctx.fillText("You won!", (canvas.width/2)-60, 525);
-    victoryCondition = true;
-  }
-}
-//Game Over Function
-function gameOver(){
-  //end game if they run out of lives
-  if (lives - livesLost == 0) {
-    play = false;
-    ctx.fillStyle = "white"
-    ctx.font = "87px Impact"
-    ctx.fillText("GAME OVER", 70, 200);
-    ctx.font = "28px Impact";
-    ctx.fillText("Refresh to Try Again!", 170, 250);
+    ctx.drawImage(pad, padsX[i], padsY[i], padWidth, padHeight)
+    //ctx.fillRect(padsX[i], padsY[i], padWidth, padHeight)
   }
 }
 //Pad Reset Function
@@ -494,7 +497,7 @@ function onPad(){
         pad1 = true;
         y = 488;
       }
-    else if (padX2 <= x + width &&
+  else if (padX2 <= x + width &&
         padX2 + padWidth >= x &&
         padY2 + padHeight >= y &&
         padY2 <= y + height){
@@ -502,7 +505,7 @@ function onPad(){
           y = 488;
         }
   
-    else if (padX3 <= x + width &&
+  else if (padX3 <= x + width &&
           padX3 + padWidth >= x &&
           padY3 + padHeight >= y &&
           padY3 <= y + height){
@@ -549,6 +552,38 @@ function onPad(){
           }
         }
   }
+//Draw Lives Win state
+function drawLives(){
+  //count and display lives left
+  if (lives - livesLost !=0){
+    ctx.fillStyle = "white"
+    ctx.font = "30px Arial"
+    ctx.fillText("LIVES: " + (lives - livesLost), (canvas.width/2)-70, 525);
+  }
+}
+//Victory
+function victory () {
+  if (pad1 && pad2 && pad3 && pad4 && pad5 && pad6){
+    //print "You Won!" at (220, 488)
+    ctx.fillStyle = "white";
+    ctx.font = "30px Arial";
+    ctx.fillText("You won!", (canvas.width/2)-60, 525);
+    victoryCondition = true;
+  }
+}
+//Game Over Function
+function gameOver(){
+  //end game if they run out of lives
+  if (lives - livesLost == 0) {
+    play = false;
+    ctx.fillStyle = "white"
+    ctx.font = "87px Impact"
+    ctx.fillText("GAME OVER", 70, 200);
+    ctx.font = "28px Impact";
+    ctx.fillText("Refresh to Try Again!", 170, 250);
+  }
+}
+
 //Draw Screen function
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -570,6 +605,8 @@ function draw() {
   runOver();
   float()
   }
+  //if(!paused) {
+    //requestAnimationFrame(draw);}
 requestAnimationFrame(draw);
 }
 draw();

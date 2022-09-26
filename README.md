@@ -23,5 +23,7 @@ The "bugs" were supposed to crawl across someone's face and the objective was to
 - add sound f/x
 - the background will be changed to a persons face
 - I will fix the lilly pads
+- the win function had a breakdown I have no idea how to fix it
+
 
 
