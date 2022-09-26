@@ -1,11 +1,11 @@
 body{
-    background-image: url('/CSS/elisaveta-bunduche-TOL5F-3qqB4-unsplash.jpg');
-    background-size: cover;
+    background-image: url('../jack-hamilton-EP_OHkgn1JI-unsplash.jpg');
+    background-size:cover;
     display: flex;
-    justify-content: center;
+    justify-content:center;
 }
 canvas{
     background: black;
-    border: 20px solid rgb(249, 1, 150);
+    border: 20px solid rgb(249, 1, 150); */ */
     
 }
