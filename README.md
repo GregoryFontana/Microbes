@@ -19,7 +19,9 @@ The "bugs" were supposed to crawl across someone's face and the objective was to
 ## Upcoming Features
 - I have to change the sprites.
 - Link a gif
-- create a spacebar stop effect
+- create a space bar stop effect
 - add sound f/x
+- the background will be changed to a persons face
+- I will fix the lilly pads
 
 
