@@ -1,11 +1,12 @@
 body{
-    background-image: url('../jack-hamilton-EP_OHkgn1JI-unsplash.jpg');
+    background-image: url('../background images/bkfrogger.jpg');
     background-size:cover;
     display: flex;
     justify-content:center;
 }
 canvas{
     background: black;
+    background-image: url('../background images/asphalt.jpg');
     border: 20px solid rgb(249, 1, 150);
     
 }

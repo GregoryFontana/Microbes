@@ -12,7 +12,7 @@
 
 
 
-### This project was intended as an adaptation of Frogger retitled: "**Microbes**":
+### This project was intended as an adaptation of Frogger retitled: "Microbes"
 
 
 >The "bugs" were supposed to crawl across someone's face and the objective was to direct your Microbe towards the giant nose at the top of the board. Once you got there, a gif of someone sneezing would play.

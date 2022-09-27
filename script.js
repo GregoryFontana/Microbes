@@ -4,15 +4,15 @@ const ctx = canvas.getContext("2d");
 
 //the grass
 let grass = new Image()
-grass.src = "background images/grass.png"
+grass.src = "background images/grass.jpg"
 
 //the water
 let water = new Image()
-water.src = "background images/water.png"
+water.src = "background images/lake.png"
 
 //the frog
 let frog = new Image();
-frog.src = "FroggerSprites2.png";
+frog.src = "sprites/FroggerSprites2.png";
 let sx =38;
 let sy = 48;
 let swidth = 110;
@@ -35,7 +35,7 @@ let left = true
 
 //All Car Variables
 let car = new Image(); 
-car.src = "froggercars.png";
+car.src = "sprites/froggercars.png";
 //1st Car
 let carX1 = 100
 let carSX1 = 0
@@ -73,7 +73,7 @@ let carY8 = 265
 
 //All Log Variables
 let log = new Image()
-log.src = "background images/wood.png"
+log.src = "background images/wood.jpg"
 //log 1
 let logX1 = 300;
 let logY1 = 180;
