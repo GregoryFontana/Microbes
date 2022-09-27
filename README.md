@@ -1,10 +1,13 @@
 ### **Frogger**
 
-## An adaptation of Frogger that was supposed to be called "**Microbes**"
+
+## Game History
+>Frogger[a] is a 1981 arcade action game developed by Konami and manufactured by Sega.[5] In North America, it was released by Sega/Gremlin. The object of the game is to direct a series of frogs to their homes by crossing a busy road and a hazardous river.
 
 ### **Motivation**
+## This project was intended as an adaptation of Frogger retitled: "**Microbes**"
 
-The "bugs" were supposed to crawl across someone's face and the objective was to direct your Microbe towards the giant nose at the top of the board. Once you got there, a gif of someone sneezing would play.
+*The "bugs" were supposed to crawl across someone's face and the objective was to direct your Microbe towards the giant nose at the top of the board. Once you got there, a gif of someone sneezing would play.*
 
 ## Images
 
